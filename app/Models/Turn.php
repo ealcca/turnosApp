@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Turn extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['date','time','pending','client_id'];
+
+    public function client()
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
 }
