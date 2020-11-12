@@ -1,4 +1,4 @@
-<x-clients>
+<x-encabezado>
     <div class="mb-6 lg:flex lg:items-center lg:justify-between">
         <div class="flex-1 min-w-0">
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
@@ -48,10 +48,10 @@
                         </thead>
                         
 
-                        
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</x-clients>
+</x-encabezado>
