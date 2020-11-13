@@ -17,7 +17,7 @@ class CreateTurnsTable extends Migration
             $table->id();
             $table->date('date');
             $table->time('time');
-            $table->boolean('pending');
+            $table->boolean('done');
             $table->timestamps();
             $table->foreignId('client_id');
         });

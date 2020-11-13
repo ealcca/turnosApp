@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainpageController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TurnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('clients',ClientController::class); 
+Route::resource('turns',TurnController::class);
