@@ -64,7 +64,13 @@
                                                     <div class="text-sm leading-5 text-gray-900">{{ $turn->time }}</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap">
-                                                    <div class="text-sm leading-5 text-gray-900">{{ $turn->pending }}</div>
+                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @if($turn->done) bg-pink-300 text-black-800 @else bg-green-300 text-black-800 @endif">
+                                                        @if($turn->done)
+                                                            Resuelta
+                                                        @else
+                                                            Pendiente
+                                                        @endif
+                                                    </span>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap">
                                                     <div class="text-sm leading-5 text-gray-900">{{ $turn->client->name }}</div>
