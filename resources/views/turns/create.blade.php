@@ -20,14 +20,18 @@
                                         Fecha
                                     </label>
                                     <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="date" id="date" name="date" value="{{ old('date' )}}">
-
+                                    @error('date')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-4">
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="time">
                                         Hora
                                     </label>
                                     <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="time" id="time" name="time" value="{{ old('time' )}}" min="09:00" max="18:00">
-
+                                    @error('time')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-4 sm:col-span-2">                                            
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="client_id">
@@ -43,8 +47,10 @@
                                                 {{ $client->name }}
                                             </option>
                                         @endforeach                                        
-                                    </select>  
-                             
+                                    </select>     
+                                    @error('client_id')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror                               
                                 </div>
                             </div>
                         </div>
