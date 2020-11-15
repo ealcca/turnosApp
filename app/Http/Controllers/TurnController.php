@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Turn;
 use App\Models\Client;
+use App\Http\Requests\CreateTurnRequest;
 use Illuminate\Http\Request;
 
 class TurnController extends Controller
@@ -36,7 +37,7 @@ class TurnController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTurnRequest $request)
     {
         $input = $request->all();
         $input['done'] = false;
