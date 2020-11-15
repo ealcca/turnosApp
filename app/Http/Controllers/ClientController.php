@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Http\Requests\CreateClientRequest;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -34,7 +35,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateClientRequest $request)
     {
         $input = $request->all();
         Client::create($input);
