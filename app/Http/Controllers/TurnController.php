@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Turn;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class TurnController extends Controller
@@ -24,8 +25,9 @@ class TurnController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $clients = Client::all();
+        return view('turns.create',['clients'=> $clients]);
     }
 
     /**
@@ -36,7 +38,10 @@ class TurnController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $input['done'] = false;
+        Turn::create($input);
+        return redirect('turns');
     }
 
     /**
