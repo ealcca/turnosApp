@@ -19,25 +19,37 @@
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="name">
                                         Nombres
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" placeholder="Juan Julian" id="name" name="name">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" placeholder="Juan Julian" id="name" name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-4">
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="lastname">
                                         Apellidos
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" placeholder="Martinez" id="lastname" name="lastname">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" placeholder="Martinez" id="lastname" name="lastname" value="{{ old('lastname') }}">
+                                    @error('lastname')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-4 sm:col-span-2">                                            
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="age">
                                         Edad
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="age" name="age">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="age" name="age" value="{{ old('age') }}">
+                                    @error('age')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-4 sm:col-span-2">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="phone">
                                         Telefono
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="phone" name="phone">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="phone" name="phone" value="{{ old('phone') }}">
+                                    @error('phone')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
