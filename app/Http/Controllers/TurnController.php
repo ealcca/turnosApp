@@ -92,6 +92,7 @@ class TurnController extends Controller
      */
     public function destroy(Turn $turn)
     {
-        //
+        $turn->delete();
+        return redirect('turns');
     }
 }
