@@ -77,7 +77,7 @@ class TurnController extends Controller
      * @param  \App\Models\Turn  $turn
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turn $turn)
+    public function update(CreateTurnRequest $request, Turn $turn)
     {
         $input = $request->all();
         $turn->update($input);

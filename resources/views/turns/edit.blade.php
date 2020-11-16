@@ -20,13 +20,19 @@
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="date">
                                         Fecha
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $turn->date }}" type="date" id="date" name="date">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $turn->date }}" type="date" id="date" name="date" value="{{ old('date') }}">
+                                    @error('date')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-4">
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="time">
                                         Hora
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $turn->time }}" type="time" id="time" name="time">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $turn->time }}" type="time" id="time" name="time" value="{{ old('time') }}">
+                                    @error('time')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror                                
                                 </div>
                                 <div class="col-span-4 sm:col-span-2">                                            
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="done">
@@ -38,10 +44,8 @@
                                     @else
                                         <input class="m-2" type="radio" value="true" id="done" name="done"> Realizado <br>
                                         <input class="m-2" type="radio" value="false" id="done" name="done" checked> Pendiente
-                                    @endif
-                                    
+                                    @endif                                    
                                 </div>
-
                                 <div class="col-span-4 sm:col-span-2">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="client_id">
                                         Cliente
@@ -52,6 +56,9 @@
                                             <option value="{{ $client->id }}">{{ $client->lastname.', '.$client->name }}</option>
                                         @endforeach                                        
                                     </select>
+                                    @error('client_id')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror  
                                 </div>
                             </div>
                         </div>
