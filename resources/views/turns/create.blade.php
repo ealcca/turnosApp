@@ -37,15 +37,10 @@
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="client_id">
                                         Cliente
                                     </label>
-                                    <select name="client_id" id="client_id" 
-                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                        <option disabled selected>
-                                            Seleccione cliente:
-                                        </option>
+                                    <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="client_id" id="client_id">
+                                        <option disabled selected>Seleccione cliente:</option>
                                         @foreach($clients as $client)
-                                            <option value="{{ $client->id }}">
-                                                {{ $client->name }}
-                                            </option>
+                                            <option value="{{ $client->id }}">{{ $client->name }}</option>
                                         @endforeach                                        
                                     </select>     
                                     @error('client_id')

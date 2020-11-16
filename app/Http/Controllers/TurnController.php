@@ -16,7 +16,9 @@ class TurnController extends Controller
      */
     public function index()
     {
-        $turns = Turn::with('Client')->get();
+        $turns = Turn::with('Client')
+            ->orderBy('date','desc')
+            ->get(); 
         return view('turns.index',['turns'=>$turns]);
     }
 
@@ -64,7 +66,8 @@ class TurnController extends Controller
      */
     public function edit(Turn $turn)
     {
-        //
+        $clients = Client::all();
+        return view('turns.edit',['turn'=>$turn,'clients'=>$clients]);
     }
 
     /**
@@ -74,9 +77,11 @@ class TurnController extends Controller
      * @param  \App\Models\Turn  $turn
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turn $turn)
+    public function update(CreateTurnRequest $request, Turn $turn)
     {
-        //
+        $input = $request->all();
+        $turn->update($input);
+        return redirect('turns');
     }
 
     /**
