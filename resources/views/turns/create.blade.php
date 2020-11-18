@@ -47,6 +47,20 @@
                                         <div class="text-red-600">{{ $message }}</div>
                                     @enderror                               
                                 </div>
+                                <div class="col-span-4 sm:col-span-2">                                            
+                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="client_id">
+                                        Asignacion
+                                    </label>
+                                    <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="user_id" id="user_id">
+                                        <option disabled selected>Seleccione un usuario:</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach                                        
+                                    </select>     
+                                    @error('user_id')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror                               
+                                </div>
                             </div>
                         </div>
                         <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
