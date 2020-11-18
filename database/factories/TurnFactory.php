@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\Turn;
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClientFactory extends Factory
+class TurnFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Client::class;
+    protected $model = Turn::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +23,10 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'lastname' => $this->faker->lastname,
-            'age' => $this->faker->numberBetween($min = 15, $max = 70),
-            'phone' => $this->faker->phoneNumber
+            'date'=>$this->faker->date,
+            'time'=>$this->faker->time,
+            'done'=>$this->faker->boolean('false'),
+            'client_id'=> Client::factory()->create()
         ];
     }
 }
