@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Turn;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TurnFactory extends Factory
@@ -26,7 +27,8 @@ class TurnFactory extends Factory
             'date'=>$this->faker->date,
             'time'=>$this->faker->time,
             'done'=>$this->faker->boolean('false'),
-            'client_id'=> Client::factory()->create()
+            'client_id'=> Client::factory()->create(),
+            'user_id'=> User::factory()->create(),
         ];
     }
 }

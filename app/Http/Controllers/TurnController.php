@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Turn;
 use App\Models\Client;
+use App\Models\User;
 use App\Http\Requests\CreateTurnRequest;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class TurnController extends Controller
     public function create()
     {   
         $clients = Client::all();
-        return view('turns.create',['clients'=> $clients]);
+        $users = User::all();
+        return view('turns.create',['clients'=> $clients,'users'=>$users]);
     }
 
     /**
@@ -43,6 +45,7 @@ class TurnController extends Controller
     {
         $input = $request->all();
         $input['done'] = false;
+        $input['user_id'] = $request->has('user_id') ?? $request->user()->id;
         Turn::create($input);
         return redirect('turns');
     }

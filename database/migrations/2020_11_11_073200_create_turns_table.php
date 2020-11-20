@@ -20,6 +20,7 @@ class CreateTurnsTable extends Migration
             $table->boolean('done');
             $table->timestamps();
             $table->foreignId('client_id');
+            $table->foreignId('user_id');
         });
     }
 

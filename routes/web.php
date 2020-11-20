@@ -22,5 +22,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('clients',ClientController::class); 
-Route::resource('turns',TurnController::class);
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::resource('clients',ClientController::class); 
+    Route::resource('turns',TurnController::class);
+});
