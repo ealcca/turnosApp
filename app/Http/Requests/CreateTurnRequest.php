@@ -27,6 +27,7 @@ class CreateTurnRequest extends FormRequest
             'date' => 'required',
             'time' => 'required',
             'client_id' => 'required',
+            'user_id' => 'required',
         ];
     }
 }
