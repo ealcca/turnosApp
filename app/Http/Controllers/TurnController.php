@@ -30,6 +30,7 @@ class TurnController extends Controller
      */
     public function create()
     {   
+        $this->authorize('create', Turn::class);
         $clients = Client::all();
         $users = User::all();
         return view('turns.create',['clients'=> $clients,'users'=>$users]);
@@ -43,9 +44,10 @@ class TurnController extends Controller
      */
     public function store(CreateTurnRequest $request)
     {
+        $this->authorize('create', Turn::class);
         $input = $request->all();
         $input['done'] = false;
-        $input['user_id'] = $request->has('user_id') ?? $request->user()->id;
+        //$input['user_id'] = $request->has('user_id') ?? $request->user()->id;
         Turn::create($input);
         return redirect('turns');
     }
@@ -69,8 +71,10 @@ class TurnController extends Controller
      */
     public function edit(Turn $turn)
     {
+        $this->authorize('update',$turn);
         $clients = Client::all();
-        return view('turns.edit',['turn'=>$turn,'clients'=>$clients]);
+        $users = User::all();
+        return view('turns.edit',['turn'=>$turn,'clients'=>$clients, 'users'=>$users]);
     }
 
     /**
@@ -82,6 +86,7 @@ class TurnController extends Controller
      */
     public function update(CreateTurnRequest $request, Turn $turn)
     {
+        $this->authorize('update',$turn);
         $input = $request->all();
         $turn->update($input);
         return redirect('turns');
