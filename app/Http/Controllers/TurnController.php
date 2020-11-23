@@ -60,7 +60,9 @@ class TurnController extends Controller
      */
     public function show(Turn $turn)
     {
-        //
+        return view('turns.show',[
+            'turn'=>$turn
+        ]);
     }
 
     /**
