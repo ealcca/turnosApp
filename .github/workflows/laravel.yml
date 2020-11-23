@@ -19,7 +19,7 @@ jobs:
   env:
      DB_USERNAME: myuser
      DB_PASSWORD: thisisasecretpassword
-     DB_HOST: http://127.0.0.1
+
     
   steps:
   - uses: actions/checkout@v2
