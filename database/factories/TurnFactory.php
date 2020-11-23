@@ -24,8 +24,8 @@ class TurnFactory extends Factory
     public function definition()
     {
         return [
-            'date'=>$this->faker->date,
-            'time'=>$this->faker->time,
+            'date'=>$this->faker->date(),
+            'time'=>$this->faker->time(),
             'done'=>$this->faker->boolean('false'),
             'client_id'=> Client::factory()->create(),
             'user_id'=> User::factory()->create(),
