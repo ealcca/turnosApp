@@ -18,9 +18,7 @@ jobs:
            - 5432:5432
   env:
      DB_USERNAME: myuser
-     DB_PASSWORD: thisisasecretpassword
-
-    
+     DB_PASSWORD: thisisasecretpassword    
   steps:
   - uses: actions/checkout@v2
   - name: Copy .env
