@@ -15,7 +15,7 @@ jobs:
            POSTGRES_USER: myuser
            POSTGRES_PASSWORD: thisisasecretpassword           
        ports:
-           - 5432:5432
+           - 54321:5432
   env:
      DB_USERNAME: myuser
      DB_PASSWORD: thisisasecretpassword
