@@ -2,21 +2,19 @@
     <div class="mb-6 lg:flex lg:items-center lg:justify-between">
         <div class="flex-1 min-w-0">
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-                Turnos
+                Registro de turnos
             </h2>
         </div>
         <div class="mt-5 flex lg:mt-0 lg:ml-4">
             @can('create',App\Models\Turn::class)
-            <span class="sm:ml-3 shadow-sm rounded-md">
-                <a href=" {{ route('turns.create') }}" id="Agregar">
-                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
-                        <svg class="-ml-1 mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
-                        </svg>
-                        Agregar
-                    </button>                
-                </a>                
-            </span>
+                <span class="sm:ml-3 shadow-sm rounded-md">
+                    <a href=" {{ route('turns.create') }}" id="Agregar">
+                        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">                            
+                            <svg class="-ml-1 mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Agregar
+                        </button>                
+                    </a>                
+                </span>
             @endcan
         </div>
     </div>
@@ -80,6 +78,27 @@
                                     <div class="text-sm leading-5 text-gray-900">{{ $turn->user->name }}</div>
                                 </td>
                                 <td class="px-5 py-4 flex space-x-4">
+
+                                    @if($turn->done)
+                                        <form method='POST' action="{{ route('turns.update',$turn->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" value="false" id="done" name="done">
+                                            <button type="submit">
+                                                <a  class="text-indigo-600 hover:text-indigo-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></a>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form method='POST' action="{{ route('turns.update',$turn->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" value="true" id="done" name="done">
+                                            <button type="submit">
+                                                <a  class="text-indigo-600 hover:text-indigo-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></a>
+                                            </button>
+                                        </form>
+                                    @endif
+
                                     <a href="{{ route('turns.edit',$turn->id) }}" class="text-indigo-600 hover:text-indigo-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></a>
                                     <form action="{{ route('turns.destroy',$turn->id ) }}" method="post">
                                         {{ method_field('DELETE') }}

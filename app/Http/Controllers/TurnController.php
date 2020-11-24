@@ -6,6 +6,7 @@ use App\Models\Turn;
 use App\Models\Client;
 use App\Models\User;
 use App\Http\Requests\CreateTurnRequest;
+use App\Http\Requests\UpdateTurnRequest;
 use Illuminate\Http\Request;
 
 class TurnController extends Controller
@@ -86,10 +87,11 @@ class TurnController extends Controller
      * @param  \App\Models\Turn  $turn
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateTurnRequest $request, Turn $turn)
+    public function update(UpdateTurnRequest $request, Turn $turn)
     {
         $this->authorize('update',$turn);
         $input = $request->all();
+        $input['done'] = $input['done'] ?? 0;
         $turn->update($input);
         return redirect('turns');
     }
