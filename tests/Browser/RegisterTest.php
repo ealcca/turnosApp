@@ -16,6 +16,27 @@ class RegisterTest extends DuskTestCase
      *
      * @return void
      */
+
+    public function testRegister()
+    {
+        $user = User::factory()->make([
+            'email'=>'test@laravel.com',
+            'password'=>bcrypt('123456789'),
+            'role'=>'admin'
+        ]);
+      
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('/register')
+                    ->type('name',$user->name)
+                    ->type('email',$user->email)
+                    ->select('role',$user->role)
+                    ->type('password','12345678')
+                    ->type('password_confirmation','12345678')
+                    ->press('REGISTER')
+                    ->assertSee('Dashboard');
+        });
+    }
+
     public function testRegisterClient()
     {
         $user = User::factory()->create([
