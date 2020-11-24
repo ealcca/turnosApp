@@ -29,7 +29,7 @@
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="time">
                                         Hora
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $turn->time }}" type="time" id="time" name="time" value="{{ old('time') }}">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $turn->time }}" type="time" id="time" name="time" value="{{ old('time') }}" min="09:00" max="20:00">
                                     @error('time')
                                         <div class="text-red-600">{{ $message }}</div>
                                     @enderror                                
@@ -44,7 +44,10 @@
                                     @else
                                         <input class="m-2" type="radio" value="true" id="done" name="done"> Realizado <br>
                                         <input class="m-2" type="radio" value="false" id="done" name="done" checked> Pendiente
-                                    @endif                                    
+                                    @endif
+                                    @error('done')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror                                     
                                 </div>
                                 <div class="col-span-4 sm:col-span-2">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="client_id">

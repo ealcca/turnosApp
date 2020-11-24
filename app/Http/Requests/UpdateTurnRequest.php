@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateTurnRequest extends FormRequest
+class UpdateTurnRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,6 +27,7 @@ class CreateTurnRequest extends FormRequest
         return [
             'date' => 'required',
             'time' => 'required',
+            'done' => 'required',
             'client_id' => ['required','exists:App\Models\Client,id'],
             'user_id' => ['required','exists:App\Models\User,id'],
         ];

@@ -28,7 +28,7 @@
                                     <label class="block uppercase tracking-wide font-medium text-xs font-bold text-gray-700" for="time">
                                         Hora
                                     </label>
-                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="time" id="time" name="time" value="{{ old('time') }}" min="09:00" max="18:00">
+                                    <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="time" id="time" name="time" value="{{ old('time') }}" min="09:00" max="20:00">
                                     @error('time')
                                         <div class="text-red-600">{{ $message }}</div>
                                     @enderror
