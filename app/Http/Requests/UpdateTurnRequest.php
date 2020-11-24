@@ -27,7 +27,7 @@ class UpdateTurnRequest extends FormRequest
         return [
             'date' => 'required',
             'time' => 'required',
-            'done' => ['required',Rule::in(['true','false']),],
+            'done' => 'required',
             'client_id' => ['required','exists:App\Models\Client,id'],
             'user_id' => ['required','exists:App\Models\User,id'],
         ];
