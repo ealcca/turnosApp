@@ -16,7 +16,7 @@ class TurnTest extends TestCase
      *
      * @return void
      */
-    public function testViewTurns()
+    public function testViewTurnsAsUser()
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user)
@@ -24,13 +24,34 @@ class TurnTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testSeeAspecificTurn()
+    public function testSeeAspecificTurnAsUser()
     {
         $user = User::factory()->create();
         $turn = Turn::factory()->create([
-            'user_id'=>$user]);
+            'user_id'=>$user
+        ]);
         $response = $this->actingAs($user)
             ->get('turns/'.$turn->id);
         $response->assertStatus(200);
+    }
+
+    public function testUserRoleCantCreateTurn()
+    {
+        $user = User::factory()->create([
+            'role'=>'user'
+        ]);
+        $response = $this->actingAs($user)
+            ->get(route('turns.create'));
+        $response->assertForbidden();
+    }
+
+    public function testManagerRoleCanCreateTurn()
+    {
+        $user = User::factory()->create([
+            'role'=>'manager'
+        ]);
+        $response = $this->actingAs($user)
+            ->get(route('turns.create'));
+            $response->assertStatus(200);
     }
 }

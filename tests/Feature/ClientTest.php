@@ -16,7 +16,7 @@ class ClientTest extends TestCase
      *
      * @return void
      */
-    public function testViewClients()
+    public function testViewClientsAsUser()
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user)
