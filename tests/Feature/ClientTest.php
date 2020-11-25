@@ -32,5 +32,20 @@ class ClientTest extends TestCase
         $response->assertStatus(200);
     }
 
-    
+    public function testStoreTurn()
+    {   
+        
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->post('clients',[
+            'name' => 'Josefina',
+            'lastname' => 'Sanchez',
+            'age' => 25,
+            'phone' => '248596352'
+        ]);
+        $client = Client::first();
+        $this->assertEquals($client->name,'Josefina');
+        $this->assertEquals($client->lastname,'Sanchez');
+        $this->assertEquals($client->age,25);
+        $this->assertEquals($client->phone, '248596352');
+    }
 }
