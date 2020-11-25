@@ -73,7 +73,6 @@ class TurnTest extends TestCase
             'client_id' => $client->id,
             'user_id' => $user->id
         ]);
-        $response->assertRedirect('/turns');
         $turn = Turn::first();
         $this->assertEquals($turn->date,'2020-10-10');
         $this->assertEquals($turn->time,'13:40:00');
@@ -114,7 +113,6 @@ class TurnTest extends TestCase
             'client_id' => $client->id,
             'user_id' => $user->id
         ]);
-        $response->assertRedirect('/turns');
         $turn = Turn::first();
         $this->assertEquals($turn->date,'2020-10-10');
         $this->assertEquals($turn->time,'13:40:00');
@@ -133,7 +131,8 @@ class TurnTest extends TestCase
             'user_id'=>$user,
             'client_id'=>$client
         ]);
-        $response = $this->actingAs($user)->delete('turns/'.$turn->id);
+        $response = $this->actingAs($user)
+            ->delete('turns/'.$turn->id);
         $turn = Turn::all();
         $this->assertEquals($turn->count(),0);        
     }
