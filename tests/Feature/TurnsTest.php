@@ -16,11 +16,21 @@ class TurnTest extends TestCase
      *
      * @return void
      */
-    public function testViewTurn()
-    {      
+    public function testViewTurns()
+    {
         $user = User::factory()->create();
         $response = $this->actingAs($user)
             ->get('/turns');
+        $response->assertStatus(200);
+    }
+
+    public function testSeeAspecificTurn()
+    {
+        $user = User::factory()->create();
+        $turn = Turn::factory()->create([
+            'user_id'=>$user]);
+        $response = $this->actingAs($user)
+            ->get('turns/'.$turn->id);
         $response->assertStatus(200);
     }
 }
