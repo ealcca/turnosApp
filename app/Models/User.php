@@ -65,4 +65,9 @@ class User extends Authenticatable
         return $this->hasMany(Turn::class);
     }
 
+    public function isManager()
+    {
+        return $this->attributes['role'] == 'manager';
+    }
+
 }
