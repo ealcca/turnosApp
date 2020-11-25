@@ -25,7 +25,7 @@ class TurnFactory extends Factory
     {
         return [
             'date'=>$this->faker->date(),
-            'time'=>$this->faker->time($format = 'H:i:s'),
+            'time'=>$this->faker->time(),
             'done'=>$this->faker->boolean('false'),
             'client_id'=> Client::factory()->create(),
             'user_id'=> User::factory()->create(),
