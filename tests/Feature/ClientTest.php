@@ -48,4 +48,17 @@ class ClientTest extends TestCase
         $this->assertEquals($client->age,25);
         $this->assertEquals($client->phone, '248596352');
     }
+
+    public function testViewEditTurn()
+    {
+        $client = Client::factory()->create();
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)
+            ->get('clients/'.$client->id.'/edit/');
+        $response->assertStatus(200);
+        $response->assertSee($client->name);
+        $response->assertSee($client->lastname);
+        $response->assertSee($client->age);
+        $response->assertSee($client->phone);   
+    }
 }
