@@ -96,4 +96,33 @@ class TurnTest extends TestCase
         $response->assertSee($turn->done);
         $response->assertSee($turn->client_id);   
     }
+
+    public function testUserManagerRoleCanEditTurn()
+    {   
+        $user = User::factory()->create([
+            'role'=>'manager'
+        ]);
+        $client = Client::factory()->create();
+        $turn = Turn::factory()->create([
+            'user_id'=>$user,
+            'client_id'=>$client
+        ]);
+        $response = $this->actingAs($user)->put('turns/'.$turn->id,[
+            'date' => '2020-10-10',
+            'time' => '13:40',
+            'done' => false,
+            'client_id' => $client->id,
+            'user_id' => $user->id
+        ]);
+        $response->assertRedirect('/turns');
+        $turn = Turn::first();
+        $this->assertEquals($turn->date,'2020-10-10');
+        $this->assertEquals($turn->time,'13:40:00');
+        $this->assertEquals($turn->done,false);
+        $this->assertEquals($turn->client_id, $client->id);
+        $this->assertEquals($turn->user_id, $user->id);
+    }
+
+    
+
 }
