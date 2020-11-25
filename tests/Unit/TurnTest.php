@@ -13,7 +13,8 @@ class TurnTest extends TestCase
     public function testClient()
     {
         $client = Client::factory()->create();
-        $turn = Turn::factory()->create(['client_id'=>$client]);
+        $turn = Turn::factory()->create([
+            'client_id'=>$client]);
         $this->assertEquals($client->id,$turn->client->id);
     }
 
