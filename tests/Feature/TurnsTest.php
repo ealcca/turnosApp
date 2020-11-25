@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Turn;
+use App\Models\Client;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -24,7 +25,7 @@ class TurnTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testSeeAspecificTurnAsUser()
+    public function testUserCanViewSpecificTurn()
     {
         $user = User::factory()->create();
         $turn = Turn::factory()->create([
@@ -52,6 +53,28 @@ class TurnTest extends TestCase
         ]);
         $response = $this->actingAs($user)
             ->get(route('turns.create'));
-            $response->assertStatus(200);
+        $response->assertStatus(200);
+    }
+
+    public function testUserManagerRoleCanStoreTurn()
+    {   
+        $client = Client::factory()->create();
+        $user = User::factory()->create([
+            'role' => 'manager'
+        ]);
+        $response = $this->actingAs($user)->post('turns',[
+            'date' => '2020-10-10',
+            'time' => '13:40',
+            'done' => false,
+            'client_id' => $client->id,
+            'user_id' => $user->id
+        ]);
+        $response->assertRedirect('/turns');
+        $turn = Turn::first();
+        $this->assertEquals($turn->date,'2020-10-10');
+        $this->assertEquals($turn->time,'13:40:00');
+        $this->assertEquals($turn->done,false);
+        $this->assertEquals($turn->client_id, $client->id);
+        $this->assertEquals($turn->user_id, $user->id);
     }
 }
