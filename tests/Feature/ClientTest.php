@@ -23,4 +23,14 @@ class ClientTest extends TestCase
             ->get('/clients');
         $response->assertStatus(200);
     }
+
+    public function testCreateClient()
+    {
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)
+            ->get(route('clients.create'));
+        $response->assertStatus(200);
+    }
+
+    
 }
