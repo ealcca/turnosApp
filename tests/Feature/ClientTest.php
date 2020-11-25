@@ -79,5 +79,13 @@ class ClientTest extends TestCase
         $this->assertEquals($client->phone,'248596352');
     }
 
-    
+    public function testDestroyClient()
+    {   
+        $user = User::factory()->create();
+        $client = Client::factory()->create();
+        $response = $this->actingAs($user)
+            ->delete('clients/'.$client->id);
+        $client = Client::all();
+        $this->assertEquals($client->count(),0);        
+    }
 }
