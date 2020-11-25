@@ -123,6 +123,22 @@ class TurnTest extends TestCase
         $this->assertEquals($turn->user_id, $user->id);
     }
 
-    
+    public function testUserManagerRoleCanDestroyTurn()
+    {   
+        $user = User::factory()->create([
+            'role'=>'manager'
+        ]);
+        $client = Client::factory()->create();
+        $turn = Turn::factory()->create([
+            'user_id'=>$user,
+            'client_id'=>$client
+        ]);
+        $response = $this->actingAs($user)->delete('turns/'.$turn->id);
+        $turn = Turn::all();
+        $this->assertEquals($turn->count(),0);        
+    }
+
+
+
 
 }
