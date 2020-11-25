@@ -16,7 +16,7 @@ class ClientTest extends TestCase
      *
      * @return void
      */
-    public function testViewClientsAsUser()
+    public function testViewClients()
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user)
@@ -32,7 +32,7 @@ class ClientTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testStoreTurn()
+    public function testStoreClient()
     {   
         
         $user = User::factory()->create();
@@ -49,7 +49,7 @@ class ClientTest extends TestCase
         $this->assertEquals($client->phone, '248596352');
     }
 
-    public function testViewEditTurn()
+    public function testViewEditClient()
     {
         $client = Client::factory()->create();
         $user = User::factory()->create();
@@ -61,4 +61,23 @@ class ClientTest extends TestCase
         $response->assertSee($client->age);
         $response->assertSee($client->phone);   
     }
+
+    public function testEditClient()
+    {   
+        $user = User::factory()->create();
+        $client = Client::factory()->create();
+        $response = $this->actingAs($user)->put('clients/'.$client->id,[
+            'name' => 'Josefina',
+            'lastname' => 'Sanchez',
+            'age' => 25,
+            'phone' => '248596352'
+        ]);
+        $client = Client::first();
+        $this->assertEquals($client->name,'Josefina');
+        $this->assertEquals($client->lastname,'Sanchez');
+        $this->assertEquals($client->age,25);
+        $this->assertEquals($client->phone,'248596352');
+    }
+
+    
 }
