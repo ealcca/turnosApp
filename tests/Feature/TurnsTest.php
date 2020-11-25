@@ -34,6 +34,10 @@ class TurnTest extends TestCase
         $response = $this->actingAs($user)
             ->get('turns/'.$turn->id);
         $response->assertStatus(200);
+        $response->assertSee($turn->date);
+        $response->assertSee($turn->time);
+        $response->assertSee($turn->done);
+        $response->assertSee($turn->client_id);   
     }
 
     public function testUserRoleCantCreateTurn()
@@ -76,5 +80,20 @@ class TurnTest extends TestCase
         $this->assertEquals($turn->done,false);
         $this->assertEquals($turn->client_id, $client->id);
         $this->assertEquals($turn->user_id, $user->id);
+    }
+
+    public function testUserCanViewEditTurn()
+    {
+        $user = User::factory()->create();
+        $turn = Turn::factory()->create([
+            'user_id'=>$user
+        ]);
+        $response = $this->actingAs($user)
+            ->get('turns/'.$turn->id.'/edit/');
+        $response->assertStatus(200);
+        $response->assertSee($turn->date);
+        $response->assertSee($turn->time);
+        $response->assertSee($turn->done);
+        $response->assertSee($turn->client_id);   
     }
 }
