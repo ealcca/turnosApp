@@ -43,9 +43,6 @@
                                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                     Cliente
                                                 </th>
-                                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                    Acciones
-                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
@@ -75,9 +72,7 @@
                                                 <td class="px-6 py-4 whitespace-no-wrap">
                                                     <div class="text-sm leading-5 text-gray-900">{{ $turn->client->name }}</div>
                                                 </td>
-                                                <td class="px-5 py-4 flex space-x-4">
-                                                    
-                                                </td>
+                                               
                                             </tr>
                                             @endforeach
                                         </tbody>
