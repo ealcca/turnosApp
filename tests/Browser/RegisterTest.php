@@ -4,6 +4,7 @@ namespace Tests\Browser;
 
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Turn;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
@@ -60,6 +61,34 @@ class RegisterTest extends DuskTestCase
                     ->type('phone',$client->phone)
                     ->press('Agregar_cliente')
                     ->assertSee('Clientes');
+        });
+    }
+
+    public function testRegisterTurn()
+    {
+        $user = User::factory()->create([
+            'email'=>'test@test.com',
+            'role'=>'manager',
+            'password'=>bcrypt('12345678')
+        ]);
+        
+        $turn = Turn::factory()->create([
+            'time'=>'0104AM'
+        ]);
+        $client = Client::factory()->create();
+
+        $this->browse(function (Browser $browser) use ($user, $client, $turn) {
+            $browser->visit('/login')
+                    ->type('email',$user->email)
+                    ->type('password','12345678')
+                    ->press('LOGIN')
+                    ->visit('/turns/create')
+                    ->type('date',$turn->date)
+                    ->type('time',$turn->time)
+                    ->select('client_id',$client->id)
+                    ->select('user_id',$user->id)
+                    ->press('Agregar_turno')
+                    ->assertSee('Registro de turnos');
         });
     }
 }
