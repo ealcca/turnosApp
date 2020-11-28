@@ -20,10 +20,10 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="role" value="{{ __('Role') }}" />                
-                <select class="block appearance-none w-full bg-white border hover:px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="role" id="role" >
-                    <option disabled selected > Select type</option>
-                    <option value="admin">Admin</option>
+                <x-jet-label for="role" value="{{ __('Role') }}" />
+                <select class="block appearance-none w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline" name="role" id="role">
+                    <option disabled selected > Select </option>
+                    <option value="admin">Manager</option>
                     <option value="user">User</option>                                                         
                 </select>
             </div>
