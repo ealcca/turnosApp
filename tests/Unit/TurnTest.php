@@ -16,13 +16,4 @@ class TurnTest extends TestCase
         $turn = Turn::factory()->create(['user_id'=>$user]);
         $this->assertEquals($user->id,$turn->user->id);
     }
-
-    public function sa()
-    {
-        $user = User::factory()->create();
-        $turn = Turn::factory()->create(['user_id'=>$user]);
-        $this->assertEquals($user->id,$turn->user->id);
-    }
-
-
 }
