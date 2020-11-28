@@ -23,7 +23,7 @@ class RegisterTest extends DuskTestCase
         $user = User::factory()->make([
             'email'=>'test@laravel.com',
             'password'=>bcrypt('123456789'),
-            'role'=>'admin'
+            'role'=>'manager'
         ]);
       
         $this->browse(function (Browser $browser) use ($user) {

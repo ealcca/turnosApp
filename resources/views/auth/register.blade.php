@@ -23,7 +23,7 @@
                 <x-jet-label for="role" value="{{ __('Role') }}" />
                 <select class="block appearance-none w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline" name="role" id="role">
                     <option disabled selected > Select </option>
-                    <option value="admin">Manager</option>
+                    <option value="manager">Manager</option>
                     <option value="user">User</option>                                                         
                 </select>
             </div>
