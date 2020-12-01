@@ -53,7 +53,8 @@ class TurnPolicy
      */
     public function update(User $user, Turn $turn)
     {
-        return $user->id === $turn->user->id;   //Solo puede actualizar la tarea el usuario que la creo o la tenga asignada
+        return $user->role == 'manager';
+        //return $user->id === $turn->user->id;   //Solo puede actualizar la tarea el usuario que la creo o la tenga asignada
     }
 
     /**
