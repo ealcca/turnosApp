@@ -86,6 +86,9 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+        foreach ($client->turns as $turn){
+            $turn->delete();
+        }
         $client->delete();
         return redirect('clients');
     }
