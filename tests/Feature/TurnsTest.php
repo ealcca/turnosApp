@@ -83,7 +83,9 @@ class TurnTest extends TestCase
 
     public function testUserCanViewEditTurn()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'role'=>'manager'
+        ]);
         $turn = Turn::factory()->create([
             'user_id'=>$user
         ]);
