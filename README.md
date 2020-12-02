@@ -8,31 +8,31 @@ App para gestionar y administrar turnos
 ![Static Code Analysis](https://github.com/ealcca/turnosApp/workflows/Static%20Code%20Analysis/badge.svg)
 ![Deploy](https://github.com/ealcca/turnosApp/workflows/Deploy/badge.svg)
 
-## Deployed demo 🚀
+# Deployed demo 🚀
 
 https://my-shifts-app.herokuapp.com/
 
-## Install project
+# Install project
 
-# Clone the repository
+## Clone the repository
 
 ```
 $ git clone https://github.com/ealcca/turnosApp.git
 ```
 
-# Install dependencies
+## Install dependencies
 
 ```
 $ composer install
 ```
 
-# Create .env 
+## Create .env 
 
 ```
 $ cp .env.example .env
 ```
 
-# Edit .env
+## Edit .env
 
 *   DB_CONNECTION=pgsql
 *   DB_HOST=database
@@ -41,19 +41,19 @@ $ cp .env.example .env
 *   DB_USERNAME=myuser
 *   DB_PASSWORD=thisisasecretpassword
 
-# Generate key
+## Generate key
 
 ```
 $ php artisan key:generate
 ```
 
-# Run migrate and seeder
+## Run migrate and seeder
 
 ```
 $ php artisan migrate --seed
 ```
 
-# Lift containers
+## Lift containers
 
 ```
 $ docker-compose up
