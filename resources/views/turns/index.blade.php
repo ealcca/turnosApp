@@ -79,7 +79,7 @@
                                 </td>
                                 <td class="px-5 py-4 flex space-x-4">
 
-                                    @if($turn->done)
+                                    <!-- @if($turn->done)
                                         <form method='POST' action="{{ route('turns.update',$turn->id) }}">
                                             @csrf
                                             @method('PUT')
@@ -97,7 +97,7 @@
                                                 <a  class="text-indigo-600 hover:text-indigo-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></a>
                                             </button>
                                         </form>
-                                    @endif
+                                    @endif -->
 
                                     @can('update',$turn)
                                         <a href="{{ route('turns.edit',$turn->id) }}" class="text-indigo-600 hover:text-indigo-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></a>
