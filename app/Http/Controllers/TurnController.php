@@ -18,9 +18,19 @@ class TurnController extends Controller
      */
     public function index()
     {
-        $turns = Turn::with('Client')
+        $user = auth()->user();
+        if ($user->isManager()){
+            $turns = Turn::with('Client')
             ->orderBy('date','desc')
             ->get(); 
+        }
+        else
+        {
+            $turns = Turn::with('Client')
+            ->where('user_id',$user->id)
+            ->get();
+        }
+        
         return view('turns.index',['turns'=>$turns]);
     }
 
