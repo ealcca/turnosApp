@@ -1,9 +1,16 @@
 <x-encabezado>
     <div class="mb-6 lg:flex lg:items-center lg:justify-between">
         <div class="flex-1 min-w-0">
-            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
-                Registro de turnos
-            </h2>
+            @if ( Auth::user()->isManager() )
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+                    Registro de turnos
+                </h2>
+                @else
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+                    Tus turnos
+                </h2>
+            @endif
+            
         </div>
         <div class="mt-5 flex lg:mt-0 lg:ml-4">
             @can('create',App\Models\Turn::class)
