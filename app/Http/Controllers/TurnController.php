@@ -24,8 +24,7 @@ class TurnController extends Controller
             ->orderBy('date','desc')
             ->get(); 
         }
-        else
-        {
+        else {
             $turns = Turn::with('Client')
             ->where('user_id',$user->id)
             ->get();
