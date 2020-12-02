@@ -34,12 +34,12 @@ $ cp .env.example .env
 
 # Edit .env
 
-* DB_CONNECTION=pgsql
-* DB_HOST=database
-* DB_PORT=5432
-* DB_DATABASE=mydb
-* DB_USERNAME=myuser
-* DB_PASSWORD=thisisasecretpassword
+*   DB_CONNECTION=pgsql
+*   DB_HOST=database
+*   DB_PORT=5432
+*   DB_DATABASE=mydb
+*   DB_USERNAME=myuser
+*   DB_PASSWORD=thisisasecretpassword
 
 # Generate key
 
