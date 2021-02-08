@@ -1882,16 +1882,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.3.11",
+            "version": "v2.3.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "5036ba31571c7ec3feca9a171e96e33628bab5ea"
+                "reference": "8f027e9bc5ad1f08f0c900244e6fdb9966f7a287"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/5036ba31571c7ec3feca9a171e96e33628bab5ea",
-                "reference": "5036ba31571c7ec3feca9a171e96e33628bab5ea",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/8f027e9bc5ad1f08f0c900244e6fdb9966f7a287",
+                "reference": "8f027e9bc5ad1f08f0c900244e6fdb9966f7a287",
                 "shasum": ""
             },
             "require": {
@@ -1946,7 +1946,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-03T01:16:27+00:00"
+            "time": "2021-02-05T15:05:19+00:00"
         },
         {
             "name": "microsoft/tolerant-php-parser",
