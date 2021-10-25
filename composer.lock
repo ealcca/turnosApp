@@ -3328,6 +3328,10 @@
                 {
                     "url": "https://github.com/ramsey",
                     "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
+                    "type": "tidelift"
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
@@ -3395,16 +3399,16 @@
         },
         {
             "name": "staabm/annotate-pull-request-from-checkstyle",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/staabm/annotate-pull-request-from-checkstyle.git",
-                "reference": "a5bd91d0dea86fa7b61a62bc263095b4e8d8bb4e"
+                "reference": "6c0843be2b95ada7e07358e5bb627ebc4b2a88e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/staabm/annotate-pull-request-from-checkstyle/zipball/a5bd91d0dea86fa7b61a62bc263095b4e8d8bb4e",
-                "reference": "a5bd91d0dea86fa7b61a62bc263095b4e8d8bb4e",
+                "url": "https://api.github.com/repos/staabm/annotate-pull-request-from-checkstyle/zipball/6c0843be2b95ada7e07358e5bb627ebc4b2a88e7",
+                "reference": "6c0843be2b95ada7e07358e5bb627ebc4b2a88e7",
                 "shasum": ""
             },
             "require": {
@@ -3434,7 +3438,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-02T06:20:55+00:00"
+            "time": "2021-10-22T12:47:53+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
